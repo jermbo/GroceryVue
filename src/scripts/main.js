@@ -1,11 +1,37 @@
 // still learning Vue and found this good example os something I was trying to do
 // https://codepen.io/Paolo-Duzioni/pen/bKKaZd by Paolo Duzioni
 console.clear();
+
+const Product = Vue.component("Product", {
+    template: "#product",
+    props: ["prod"],
+    methods: {
+        addItem(prod) {
+            this.$emit("clicked", prod);
+        }
+    }
+});
+
+const Cart = Vue.component("Cart", {
+    props: ["cart", "total"],
+    template: "#cart",
+    methods: {
+        add(item) {
+            this.$emit("add", item);
+        },
+        sub(item) {
+            this.$emit("sub", item);
+        }
+    }
+});
+
+Vue.filter("currency", price => `$${price.toFixed(2)}`);
+
 new Vue({
     el: "#app",
     data() {
         return {
-            appTitle: "Vue Shop",
+            appTitle: "Component Vue Shop",
             products: [
                 { id: 1, title: "product 1", price: 1.88 },
                 { id: 2, title: "product 2", price: 2.88 },
@@ -16,12 +42,16 @@ new Vue({
             total: 0
         };
     },
+    components: {
+        product: Product,
+        cart: Cart
+    },
     methods: {
-        addItem(prod) {
+        addToCart(prod) {
             this.total += prod.price;
             let inCart = false;
             for (let i = 0; i < this.cart.length; i++) {
-                if (this.cart[i].id === prod.id) {
+                if (this.cart[i].id == prod.id) {
                     inCart = true;
                     this.cart[i].quantity++;
                     break;
@@ -32,7 +62,7 @@ new Vue({
                     id: prod.id,
                     title: prod.title,
                     price: prod.price,
-                    quantity: 1,
+                    quantity: 1
                 });
             }
         },
@@ -52,19 +82,6 @@ new Vue({
                     }
                 }
             }
-        },
-        remove(item) {
-            console.log(item);
-            for (let i = item.quantity; i > 0; i--) {
-                this.total -= item.price;
-            }
-            for (let i = 0; i < this.cart.length; i++) {
-                if (this.cart[i].id === item.id) {
-                    this.cart.splice(i, 1);
-                    break;
-                }
-            }
-
         }
     },
     filters: {

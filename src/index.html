@@ -11,6 +11,7 @@
 
 <body>
 
+
     <div id="app">
         <header>
             <h1>{{ appTitle }}</h1>
@@ -21,12 +22,7 @@
                     <h2>Products</h2>
                     <ul class="products-list">
                         <li class="product" v-for="(prod, ind) in products" :key="'ind-' + ind">
-                            <div class="box">
-                                <div class="image"></div>
-                                <h3 class="title">{{ prod.title }}</h3>
-                                <p class="price">{{ prod.price | currency }}</p>
-                                <button @click="addItem(prod)">Add to cart</button>
-                            </div>
+                            <product :prod="prod" @clicked="addToCart"></product>
                         </li>
                     </ul>
                 </div>
@@ -34,47 +30,7 @@
             <div class="col-dx">
                 <div class="cart">
                     <h2>Your Cart</h2>
-                    <table class="cart-list" v-if="cart.length">
-                        <thead>
-                            <tr>
-                                <th class="head-title">Product</th>
-                                <th class="head-price">Price</th>
-                                <th class="head-quantity">Quantity</th>
-                                <th class="head-total">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="cart-item" v-for="(item, id) in cart" :key="'id-' + id">
-                                <td>
-                                    <h4 class="title">{{ item.title }}</h4>
-                                </td>
-                                <td>
-                                    <div class="price">{{ item.price | currency }}</div>
-                                </td>
-                                <td>
-                                    <div class="quantity">
-                                        <span class="qty-handler">
-                                            <span @click="add(item)">+</span>
-                                            <span style="background: white; color: black;">{{ item.quantity }}</span>
-                                            <span @click="sub(item)">-</span>
-                                            <span @click="remove(item)">x</span>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="total">{{ item.price * item.quantity | currency }}</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th colspan="3">
-                                    <h4 class="total-title">Total</h4>
-                                </th>
-                                <th>{{ total | currency }}</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <cart v-if="cart.length" :cart="cart" :total="total" @add="add" @sub="sub"> </cart>
                     <div class="empty-contents" v-else="v-else">
                         <div class="draw">
                             <div class="cactus">
@@ -101,6 +57,57 @@
             </div>
         </div>
     </div>
+    <template id="product">
+        <div class="box">
+            <div class="image"></div>
+            <h3 class="title">{{ prod.title }}</h3>
+            <p class="price">{{ prod.price | currency }}</p>
+            <button @click="addItem(prod)">Add to cart</button>
+        </div>
+    </template>
+    <template id="cart">
+        <table class="cart-list">
+            <thead>
+                <tr>
+                    <th class="head-title">Product</th>
+                    <th class="head-price">Price</th>
+                    <th class="head-quantity">Quantity</th>
+                    <th class="head-total">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="cart-item" v-for="(item, id) in cart" :key="'id-' + id">
+                    <td>
+                        <h4 class="title">{{ item.title }}</h4>
+                    </td>
+                    <td>
+                        <div class="price">{{ item.price | currency }}</div>
+                    </td>
+                    <td>
+                        <div class="quantity">
+                            {{ item.quantity }}
+                            <span class="qty-handler">
+                                <span @click="add(item)">+</span>
+                                <span @click="sub(item)">-</span>
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="total">{{ item.price * item.quantity | currency }}</div>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">
+                        <h4 class="total-title">Total</h4>
+                    </th>
+                    <th>{{ total | currency }}</th>
+                </tr>
+            </tfoot>
+        </table>
+    </template>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
     <script src="scripts/main.js"></script>
 </body>
