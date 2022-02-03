@@ -13,44 +13,61 @@ console.log(props.items);
 <template>
   <section>
     <h2>Inventory Goes here</h2>
-    <div class="items">
-      <section class="item" v-for="item in items" :key="item.id">
-        <div class="image">
-          <img :src="item.image" :alt="`Picture of ${item.name}`" lazy="true" />
+    <div class="items-wrapper">
+      <a href="#" class="item" v-for="item in items" :key="item.id">
+        <div class="image-wrapper">
+          <img :src="item.image" :alt="item.name" class="" />
         </div>
-        <header>
-          <p>{{ item.name }}</p>
-          <p>{{ item.price }}</p>
-        </header>
-      </section>
+        <div class="header">
+          <h3 class="name">{{ item.name }}</h3>
+          <p class="price">${{ item.price }}</p>
+        </div>
+      </a>
     </div>
   </section>
 </template>
 
-<style lang="scss">
-.items {
-  @apply relative
-    grid 
-    grid-cols-4 
-    gap-4;
+<style lang="scss" scoped>
+.items-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  @apply gap-4;
 }
+
 .item {
-  @apply relative
-    cursor-pointer 
-  bg-zinc-100 
-    p-4 
-    rounded-md 
-    transition-all 
-    shadow-sm 
-    hover:shadow-md 
-    hover:scale-105;
+  @apply bg-slate-200
+    rounded-md
+    overflow-hidden;
 }
 
-.image {
-  @apply h-1/2;
+.image-wrapper {
+  @apply w-full 
+    h-[150px]
+    overflow-hidden;
+}
 
-  img {
-    @apply object-cover w-full h-full;
-  }
+img {
+  @apply w-full 
+    h-full 
+    object-center 
+    object-cover 
+    group-hover:opacity-75;
+}
+
+.header {
+  @apply p-2 
+    flex 
+    justify-between;
+}
+
+.name {
+  @apply text-sm 
+    text-gray-700;
+}
+
+.price {
+  @apply text-lg 
+    font-bold 
+    text-gray-900;
 }
 </style>
