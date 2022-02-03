@@ -1,7 +1,7 @@
 import { Category } from "../types/Category";
 import { InventoryItem } from "../types/Item";
 
-const inventoryItems: InventoryItem[] = [
+export const inventoryItems: InventoryItem[] = [
   {
     id: 1,
     category: Category.vegetables,

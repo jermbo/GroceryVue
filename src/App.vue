@@ -1,8 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { storeToRefs } from "pinia";
+import Categories from "./components/Categories.vue";
+import Inventory from "./components/Inventory.vue";
+import { useStore } from "./store/store";
+
+const store = useStore();
+const { inventoryItems } = storeToRefs(store);
+</script>
 
 <template>
   <div class="main">
-    <h1>Vue + Vite + Pinia + Tailwind</h1>
+    <Categories title="what" :likes="3" />
+    <Inventory :items="inventoryItems" />
   </div>
 </template>
 
