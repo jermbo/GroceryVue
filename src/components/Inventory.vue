@@ -5,16 +5,15 @@ interface Props {
   items: InventoryItem[];
 }
 
-const props = defineProps<Props>();
+const { items } = defineProps<Props>();
 
-console.log(props.items);
+console.log(items);
 </script>
 
 <template>
-  <section>
-    <h2>Inventory Goes here</h2>
-    <div class="items-wrapper">
-      <a href="#" class="item" v-for="item in items" :key="item.id">
+  <section class="items-wrapper">
+    <article v-for="item in items" :key="item.id" class="item">
+      <a href="#">
         <div class="image-wrapper">
           <img :src="item.image" :alt="item.name" class="" />
         </div>
@@ -23,7 +22,7 @@ console.log(props.items);
           <p class="price">${{ item.price }}</p>
         </div>
       </a>
-    </div>
+    </article>
   </section>
 </template>
 
@@ -37,7 +36,9 @@ console.log(props.items);
 .item {
   @apply bg-slate-200
     rounded-md
-    overflow-hidden;
+    overflow-hidden
+    hover:scale-105
+    transition-all;
 }
 
 .image-wrapper {
