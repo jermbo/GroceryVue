@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Profile from "./Profile.vue";
+import Cart from "./Cart.vue";
 </script>
 
 <template>
@@ -40,7 +40,7 @@ import Profile from "./Profile.vue";
         </form>
       </div>
       <div class="ml-4 flex items-center md:ml-6">
-        <Profile />
+        <Cart />
       </div>
     </div>
   </div>

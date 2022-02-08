@@ -1,24 +1,26 @@
 <script setup lang="ts">
+import { useMainStore } from "../store/store";
 import { InventoryItem } from "../types/Item";
 
-interface Props {
-  items: InventoryItem[];
-}
+interface Props {}
 
-const { items } = defineProps<Props>();
+const mainStore = useMainStore();
+const items = mainStore.inventoryItems;
 
-console.log(items);
+const addToCart = (item: InventoryItem) => {
+  mainStore.addToCart(item);
+};
 </script>
 
 <template>
   <section class="items-wrapper">
     <article v-for="item in items" :key="item.id" class="item">
-      <a href="#">
+      <a href="#" @click="addToCart(item)">
         <div class="image-wrapper">
           <img :src="item.image" :alt="item.name" class="" />
         </div>
         <div class="header">
-          <h3 class="name">{{ item.name }}</h3>
+          <h3 class="name">{{ item.name }} - {{ item.stock }}</h3>
           <p class="price">${{ item.price }}</p>
         </div>
       </a>

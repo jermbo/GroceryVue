@@ -5,3 +5,4 @@ dist-ssr
 *.local
 
 __old
+__pina-test

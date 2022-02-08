@@ -4,6 +4,7 @@ import { InventoryItem } from "../types/Item";
 export const inventoryItems: InventoryItem[] = [
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Asparagus",
     price: 2.39,
@@ -11,6 +12,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Broccoli",
     price: 1.89,
@@ -18,6 +20,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Carrots",
     price: 2.19,
@@ -25,6 +28,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Cauliflower",
     price: 2.09,
@@ -32,6 +36,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Celery",
     price: 1.69,
@@ -39,6 +44,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Corn",
     price: 1.99,
@@ -46,6 +52,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Cucumbers",
     price: 0.89,
@@ -53,6 +60,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Lettuce",
     price: 3.29,
@@ -60,6 +68,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Mushrooms",
     price: 2.89,
@@ -67,6 +76,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Onions",
     price: 2.59,
@@ -74,6 +84,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Peppers",
     price: 1.79,
@@ -81,6 +92,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Potatoes",
     price: 0.89,
@@ -88,6 +100,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Spinach",
     price: 1.99,
@@ -95,6 +108,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Squash",
     price: 1.79,
@@ -102,6 +116,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Zucchini",
     price: 1.39,
@@ -109,6 +124,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.vegetables,
     name: "Tomatoes",
     price: 1.99,
@@ -116,6 +132,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.dairy,
     name: "Butter / Margarine",
     price: 2.29,
@@ -123,6 +140,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.dairy,
     name: "Cottage cheese",
     price: 2.59,
@@ -130,6 +148,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.dairy,
     name: "Half & half",
     price: 4.19,
@@ -137,6 +156,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.dairy,
     name: "Milk",
     price: 4.29,
@@ -144,6 +164,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.dairy,
     name: "Sour cream",
     price: 2.99,
@@ -151,6 +172,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.dairy,
     name: "Whipped cream",
     price: 2.99,
@@ -158,6 +180,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.dairy,
     name: "Yogurt",
     price: 2.09,
@@ -165,6 +188,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Apples",
     price: 2.19,
@@ -172,6 +196,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Avocados",
     price: 2.89,
@@ -179,6 +204,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Bananas",
     price: 0.79,
@@ -186,6 +212,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Berries",
     price: 2.09,
@@ -193,6 +220,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Cherries",
     price: 3.29,
@@ -200,6 +228,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Grapefruit",
     price: 1.69,
@@ -207,6 +236,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Grapes",
     price: 2.99,
@@ -214,6 +244,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Kiwis",
     price: 2.59,
@@ -221,6 +252,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Lemons / Limes",
     price: 1.49,
@@ -228,6 +260,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Melon",
     price: 3.49,
@@ -235,6 +268,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Nectarines",
     price: 2.69,
@@ -242,6 +276,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Oranges",
     price: 2.09,
@@ -249,6 +284,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Peaches",
     price: 2.09,
@@ -256,6 +292,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Pears",
     price: 2.69,
@@ -263,6 +300,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.fruits,
     name: "Plums",
     price: 2.59,
@@ -270,6 +308,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.seafood,
     name: "Catfish",
     price: 2.89,
@@ -277,6 +316,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.seafood,
     name: "Crab",
     price: 8.89,
@@ -284,6 +324,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.seafood,
     name: "Lobster",
     price: 12.89,
@@ -291,6 +332,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.seafood,
     name: "Mussels",
     price: 5.89,
@@ -298,6 +340,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.seafood,
     name: "Oysters",
     price: 3.39,
@@ -305,6 +348,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.seafood,
     name: "Salmon",
     price: 7.99,
@@ -312,6 +356,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.seafood,
     name: "Shrimp",
     price: 4.89,
@@ -319,6 +364,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.seafood,
     name: "Tilapia",
     price: 5.89,
@@ -326,6 +372,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.seafood,
     name: "Tuna",
     price: 6.89,
@@ -333,6 +380,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.meat,
     name: "Bacon / Sausage",
     price: 2.89,
@@ -340,6 +388,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.meat,
     name: "Beef",
     price: 4.59,
@@ -347,6 +396,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.meat,
     name: "Chicken",
     price: 4.59,
@@ -354,6 +404,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.meat,
     name: "Ground beef",
     price: 3.99,
@@ -361,6 +412,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.meat,
     name: "Ham / Pork",
     price: 2.89,
@@ -368,6 +420,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.meat,
     name: "Hot dogs",
     price: 2.39,
@@ -375,6 +428,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.meat,
     name: "Lunchmeat",
     price: 3.09,
@@ -382,6 +436,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 1,
+    stock: 10,
     category: Category.meat,
     name: "Turkey",
     price: 3.49,
