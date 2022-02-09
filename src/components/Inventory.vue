@@ -1,15 +1,11 @@
 <script setup lang="ts">
+import { toRefs } from "vue";
 import { useMainStore } from "../store/store";
-import { InventoryItem } from "../types/Item";
 
 interface Props {}
 
-const mainStore = useMainStore();
-const items = mainStore.inventoryItems;
-
-const addToCart = (item: InventoryItem) => {
-  mainStore.addToCart(item);
-};
+const { addToCart, inventoryItems } = toRefs(useMainStore());
+const items = inventoryItems;
 </script>
 
 <template>

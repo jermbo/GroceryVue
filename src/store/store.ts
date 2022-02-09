@@ -1,28 +1,50 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 import { inventoryItems } from "../data/inventory";
-import { InventoryItem } from "../types/Item";
+import { Cart, InventoryItem } from "../types/Item";
 
 interface State {
   inventoryItems: InventoryItem[];
-  cart: InventoryItem[];
+  cart: Cart;
 }
 
 export const useMainStore = defineStore("main", {
   state: () => {
     return {
       inventoryItems,
-      cart: [],
+      cart: {},
     } as State;
   },
   actions: {
     addToCart(item: InventoryItem) {
-      if (!item) return;
-      this.cart.push(item);
+      // this.cart.push(item);
+      console.clear();
+      console.log("add to cart");
+      console.log(item.name);
+
+      if (!this.cart[item.name]) {
+        this.cart[item.name] = {
+          name: item.name,
+          totalCost: item.price,
+          totalAmount: 0,
+        };
+      }
+
+      this.cart[item.name].totalAmount++;
+      this.cart[item.name].totalCost =
+        this.cart[item.name].totalAmount * item.price;
+
+      console.log(this.cart[item.name]);
     },
   },
   getters: {
+    getCart(state) {
+      return state.cart;
+    },
     cartAmountTotal(state) {
-      const total = state.cart.reduce((acc, next) => acc + next.price, 0);
+      let total = 0;
+      for (let key in this.cart) {
+        total += this.cart[key].totalCost;
+      }
       return total.toFixed(2);
     },
   },

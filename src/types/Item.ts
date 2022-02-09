@@ -8,3 +8,12 @@ export interface InventoryItem {
   price: number;
   image: string;
 }
+
+export interface CartItem {
+  name: string;
+  totalCost: number;
+  totalAmount: number;
+}
+export interface Cart {
+  [id: string]: CartItem;
+}
