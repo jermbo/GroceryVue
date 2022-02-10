@@ -1,9 +1,11 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 import { inventoryItems } from "../data/inventory";
+import { Category } from "../types/Category";
 import { Cart, InventoryItem } from "../types/Item";
 
 interface State {
   inventoryItems: InventoryItem[];
+  filteredItems: InventoryItem[];
   cart: Cart;
 }
 
@@ -11,36 +13,56 @@ export const useMainStore = defineStore("main", {
   state: () => {
     return {
       inventoryItems,
+      filteredItems: inventoryItems,
       cart: {},
     } as State;
   },
   actions: {
     addToCart(item: InventoryItem) {
-      // this.cart.push(item);
-      console.clear();
-      console.log("add to cart");
-      console.log(item.name);
+      const { name, price, stock } = item;
 
-      if (!this.cart[item.name]) {
-        this.cart[item.name] = {
-          name: item.name,
-          totalCost: item.price,
+      if (!stock) {
+        console.log("Sorry this item cannot be added");
+        return;
+      }
+
+      if (!this.cart[name]) {
+        this.cart[name] = {
+          name: name,
+          totalCost: price,
           totalAmount: 0,
         };
       }
 
-      this.cart[item.name].totalAmount++;
-      this.cart[item.name].totalCost =
-        this.cart[item.name].totalAmount * item.price;
+      this.cart[name].totalAmount++;
+      this.cart[name].totalCost = this.cart[name].totalAmount * price;
 
-      console.log(this.cart[item.name]);
+      this.reduceStock(name);
+    },
+    reduceStock(name: string) {
+      this.inventoryItems.forEach((item) => {
+        if (item.name === name) {
+          item.stock--;
+        }
+      });
+    },
+    getInventoryCategory(category: Category) {
+      if (category === Category.all) {
+        console.log(this.inventoryItems);
+        this.filteredItems = this.inventoryItems;
+        return;
+      }
+      this.filteredItems = this.inventoryItems.filter(
+        (item) => item.category == category
+      );
     },
   },
   getters: {
-    getCart(state) {
-      return state.cart;
+    getCarItems(state: State) {
+      const items = Object.keys(state.cart);
+      return items;
     },
-    cartAmountTotal(state) {
+    cartAmountTotal(state: state) {
       let total = 0;
       for (let key in this.cart) {
         total += this.cart[key].totalCost;

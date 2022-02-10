@@ -1,4 +1,5 @@
 export enum Category {
+  all = "all",
   vegetables = "vegetables",
   dairy = "dairy",
   fruits = "fruits",
