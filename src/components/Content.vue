@@ -1,25 +1,13 @@
 <script setup lang="ts">
 import Inventory from "./Inventory.vue";
 import SectionHeader from "./SectionHeader.vue";
-import { categories } from "../data/Categories";
-import { useMainStore } from "../store/store";
-import { toRefs } from "vue";
-
-const { getInventoryCategory } = toRefs(useMainStore());
+import InventoryCategory from "./InventoryCategory.vue";
 </script>
 
 <template>
   <main class="">
     <SectionHeader title="Inventory" />
-    <nav>
-      <button
-        v-for="cat in categories"
-        :key="cat"
-        @click="getInventoryCategory(cat)"
-      >
-        {{ cat }}
-      </button>
-    </nav>
+    <InventoryCategory />
     <Inventory />
   </main>
 </template>

@@ -3,10 +3,12 @@ import { inventoryItems } from "../data/inventory";
 import { Category } from "../types/Category";
 import { Cart, InventoryItem } from "../types/Item";
 
+type CartDetailsState = "open" | "closed";
 interface State {
   inventoryItems: InventoryItem[];
   filteredItems: InventoryItem[];
   cart: Cart;
+  cartDetailsState: CartDetailsState;
 }
 
 export const useMainStore = defineStore("main", {
@@ -15,6 +17,7 @@ export const useMainStore = defineStore("main", {
       inventoryItems,
       filteredItems: inventoryItems,
       cart: {},
+      cartDetailsState: "open",
     } as State;
   },
   actions: {
@@ -56,13 +59,20 @@ export const useMainStore = defineStore("main", {
         (item) => item.category == category
       );
     },
+    toggleCartDetailsState() {
+      this.cartDetailsState =
+        this.cartDetailsState === "open" ? "closed" : "open";
+    },
+    closeCartDetails() {
+      this.cartDetailsState = "closed";
+    },
   },
   getters: {
     getCarItems(state: State) {
       const items = Object.keys(state.cart);
       return items;
     },
-    cartAmountTotal(state: state) {
+    cartAmountTotal(state: State) {
       let total = 0;
       for (let key in this.cart) {
         total += this.cart[key].totalCost;
