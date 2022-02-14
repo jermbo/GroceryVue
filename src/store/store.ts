@@ -42,6 +42,8 @@ export const useMainStore = defineStore("main", {
 
       this.reduceStock(name);
     },
+    decrementCartItem() {},
+    incrementCartItem() {},
     reduceStock(name: string) {
       this.inventoryItems.forEach((item) => {
         if (item.name === name) {
