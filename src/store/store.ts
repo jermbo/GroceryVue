@@ -1,7 +1,7 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 import { inventoryItems } from "../data/inventory";
 import { Category } from "../types/Category";
-import { Cart, InventoryItem } from "../types/Item";
+import { Cart, CartItem, InventoryItem } from "../types/Item";
 
 type CartDetailsState = "open" | "closed";
 interface State {
@@ -21,11 +21,15 @@ export const useMainStore = defineStore("main", {
     } as State;
   },
   actions: {
+    outOfStock(name: string) {
+      // TODO: Add Toast message for which item is out of stock
+      console.log(`Sorry, ${name} are currently out of stock.`);
+    },
     addToCart(item: InventoryItem) {
       const { name, price, stock } = item;
 
       if (!stock) {
-        console.log("Sorry this item cannot be added");
+        this.outOfStock(name);
         return;
       }
 
@@ -40,15 +44,37 @@ export const useMainStore = defineStore("main", {
       this.cart[name].totalAmount++;
       this.cart[name].totalCost = this.cart[name].totalAmount * price;
 
-      this.reduceStock(name);
+      this.updateStockAmount(name, "reduce");
     },
-    decrementCartItem() {},
-    incrementCartItem() {},
-    reduceStock(name: string) {
+    decrementCartItem(item: CartItem) {
+      this.updateStockAmount(item.name, "increase");
+      item.totalAmount--;
+
+      if (item.totalAmount < 1) {
+        delete this.cart[item.name];
+      }
+    },
+    incrementCartItem(item: CartItem) {
+      if (!this.stockAvailable(item.name)) {
+        this.outOfStock(item.name);
+        return;
+      }
+
+      this.updateStockAmount(item.name, "reduce");
+      item.totalAmount++;
+    },
+    stockAvailable(name: string): boolean {
+      let isAvailable = false;
       this.inventoryItems.forEach((item) => {
-        if (item.name === name) {
-          item.stock--;
-        }
+        if (item.name !== name) return;
+        isAvailable = item.stock > 0;
+      });
+      return isAvailable;
+    },
+    updateStockAmount(name: string, type: "reduce" | "increase") {
+      this.inventoryItems.forEach((item) => {
+        if (item.name !== name) return;
+        item.stock = type === "reduce" ? item.stock - 1 : item.stock + 1;
       });
     },
     getInventoryCategory(category: Category) {
