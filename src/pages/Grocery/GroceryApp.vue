@@ -25,13 +25,23 @@ import InventoryItems from "./components/InventoryItems.vue";
 <style scoped lang="scss">
 .main {
   display: grid;
-  grid-template-columns: 1fr 1fr minmax(250px, 500px);
-  grid-template-rows: minmax(100px, 150px) 1fr minmax(75px, 100px);
+  grid-template-columns: 1fr 1fr minmax(250px, 1fr);
+  grid-template-rows: 10vh 80vh 10vh;
   grid-template-areas:
     "header header cart"
     "content content cart"
     "category category cart";
   @apply h-screen w-screen;
+
+  @media (max-width: 55em) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 8vh 60vh 8vh 22vh;
+    grid-template-areas:
+      "header"
+      "content"
+      "category"
+      "cart";
+  }
 }
 
 .header {

@@ -21,8 +21,7 @@ const { inventoryItems, addToCart } = toRefs(useMainStore());
 .inventory-items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  height: 75vh;
-  overflow-y: auto;
-  @apply gap-4 p-4;
+  height: 95%;
+  @apply gap-4 p-4 overflow-y-auto;
 }
 </style>

@@ -1,26 +1,22 @@
 <script setup lang="ts">
 import { useMainStore } from "@/store/store";
 import { toRefs } from "vue";
-
-const { cart, decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
-  useMainStore()
-);
+import CartSingle from "./CartSingle.vue";
+const { cartAmountTotal, cart } = toRefs(useMainStore());
 </script>
 
 <template>
-  <div v-for="item in cart" :key="item.name">
-    <p>{{ item.name }}</p>
-    <div>
-      <button @click="decrementCartItem(item)">-</button>
-      <span>{{ item.totalAmount }}</span>
-      <button
-        @click="incrementCartItem(item)"
-        :disabled="!stockAvailable(item.name)"
-      >
-        +
-      </button>
-    </div>
-  </div>
+  <section>
+    <template v-if="cartAmountTotal">
+      <CartSingle v-for="item in cart" :key="item.name" :item="item" />
+      <div class="cart-total">
+        <p>Grand Total: {{ cartAmountTotal }}</p>
+      </div>
+    </template>
+    <template v-if="!cartAmountTotal">
+      <p>Add items to your cart</p>
+    </template>
+  </section>
 </template>
 
 <style scoped lang="scss">

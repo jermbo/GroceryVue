@@ -87,25 +87,27 @@ export const useMainStore = defineStore("main", {
         (item) => item.category == category
       );
     },
-    toggleCartDetailsState() {
-      this.cartDetailsState =
-        this.cartDetailsState === "open" ? "closed" : "open";
-    },
-    closeCartDetails() {
-      this.cartDetailsState = "closed";
-    },
+    // toggleCartDetailsState() {
+    //   this.cartDetailsState =
+    //     this.cartDetailsState === "open" ? "closed" : "open";
+    // },
+    // closeCartDetails() {
+    //   this.cartDetailsState = "closed";
+    // },
   },
   getters: {
     getCarItems(state: State) {
       const items = Object.keys(state.cart);
       return items;
     },
-    cartAmountTotal(state: State) {
-      let total = 0;
-      for (let key in this.cart) {
-        total += this.cart[key].totalCost;
+    cartAmountTotal(state: State): string | null {
+      if (!Object.keys(state.cart).length) return null;
+
+      let grandTotal = 0;
+      for (let key in state.cart) {
+        grandTotal += state.cart[key].totalCost;
       }
-      return total.toFixed(2);
+      return grandTotal.toFixed(2);
     },
   },
 });
