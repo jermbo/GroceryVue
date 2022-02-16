@@ -1,7 +1,7 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 import { inventoryItems } from "../data/inventory";
 import { Category } from "../types/Category";
-import { Cart, CartItem, InventoryItem } from "../types/Item";
+import { Cartop, CartItem, InventoryItem } from "../types/Item";
 
 type CartDetailsState = "open" | "closed";
 interface State {
@@ -87,13 +87,12 @@ export const useMainStore = defineStore("main", {
         (item) => item.category == category
       );
     },
-    // toggleCartDetailsState() {
-    //   this.cartDetailsState =
-    //     this.cartDetailsState === "open" ? "closed" : "open";
-    // },
-    // closeCartDetails() {
-    //   this.cartDetailsState = "closed";
-    // },
+    filterInventory(category: Category) {
+      const filtered = this.$state.inventoryItems.filter(
+        (item) => item.category == category
+      );
+      this.filteredItems = filtered;
+    },
   },
   getters: {
     getCarItems(state: State) {
@@ -108,6 +107,14 @@ export const useMainStore = defineStore("main", {
         grandTotal += state.cart[key].totalCost;
       }
       return grandTotal.toFixed(2);
+    },
+    allCategories(state: State): Category[] {
+      return state.inventoryItems.reduce((acc, item) => {
+        if (!acc.includes(item.category)) {
+          acc.push(item.category);
+        }
+        return acc;
+      }, [] as Category[]);
     },
   },
 });

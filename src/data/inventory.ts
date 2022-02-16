@@ -172,7 +172,7 @@ export const inventoryItems: InventoryItem[] = [
   },
   {
     id: 32,
-    stock: 0,
+    stock: 10,
     category: Category.fruits,
     name: "Lemons / Limes",
     price: 1.49,

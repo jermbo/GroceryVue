@@ -3,13 +3,13 @@ import { useMainStore } from "@/store/store";
 import { toRefs } from "vue";
 import InventoryItem from "./InventoryItem.vue";
 
-const { inventoryItems, addToCart } = toRefs(useMainStore());
+const { filteredItems, addToCart } = toRefs(useMainStore());
 </script>
 
 <template>
   <div class="inventory-items">
     <InventoryItem
-      v-for="item in inventoryItems"
+      v-for="item in filteredItems"
       :key="item.id"
       :item="item"
       @click="addToCart(item)"
