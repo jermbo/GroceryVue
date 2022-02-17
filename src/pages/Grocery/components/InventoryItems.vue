@@ -8,12 +8,14 @@ const { filteredItems, addToCart } = toRefs(useMainStore());
 
 <template>
   <div class="inventory-items">
-    <InventoryItem
-      v-for="item in filteredItems"
-      :key="item.id"
-      :item="item"
-      @click="addToCart(item)"
-    />
+    <template v-if="filteredItems">
+      <InventoryItem
+        v-for="item in filteredItems"
+        :key="item.id"
+        :item="item"
+        @click="addToCart(item)"
+      />
+    </template>
   </div>
 </template>
 

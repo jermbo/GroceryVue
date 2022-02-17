@@ -22,8 +22,8 @@ const { item } = toRefs(props);
 <style scoped lang="scss">
 .item {
   @apply p-2
-  border-2
-  rounded-md
+    border-2
+    rounded-md
   bg-slate-200
   border-black block shadow-md;
 }

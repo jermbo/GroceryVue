@@ -31,7 +31,7 @@ import InventoryItems from "./components/InventoryItems.vue";
     "header header cart"
     "content content cart"
     "category category cart";
-  @apply h-screen w-screen;
+  @apply max-h-screen  max-w-full bg-gray-200;
 
   @media (max-width: 55em) {
     grid-template-columns: 1fr;
@@ -46,21 +46,21 @@ import InventoryItems from "./components/InventoryItems.vue";
 
 .header {
   grid-area: header;
-  @apply bg-gray-200;
+  // @apply bg-gray-200;
 }
 
 .cart {
   grid-area: cart;
-  @apply bg-gray-100;
+  // @apply bg-gray-100;
 }
 
 .inventory {
   grid-area: content;
-  @apply bg-gray-300;
+  // @apply bg-gray-300;
 }
 
 .categories {
   grid-area: category;
-  @apply bg-gray-400;
+  // @apply bg-gray-400;
 }
 </style>

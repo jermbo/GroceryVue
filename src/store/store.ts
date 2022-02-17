@@ -1,7 +1,7 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 import { inventoryItems } from "../data/inventory";
 import { Category } from "../types/Category";
-import { Cartop, CartItem, InventoryItem } from "../types/Item";
+import { Cart, CartItem, InventoryItem } from "../types/Item";
 
 type CartDetailsState = "open" | "closed";
 interface State {
