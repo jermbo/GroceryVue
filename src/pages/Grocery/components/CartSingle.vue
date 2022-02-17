@@ -16,7 +16,15 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
 </script>
 
 <template>
-  <div>
+  <div class="cart-item">
+    <img
+      :src="item.image"
+      width="50"
+      height="50"
+      loading="lazy"
+      :alt="item.name"
+    />
+
     <p>{{ item.name }}</p>
     <div>
       <button @click="decrementCartItem(item)">-</button>

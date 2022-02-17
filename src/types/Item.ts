@@ -11,6 +11,7 @@ export interface InventoryItem {
 
 export interface CartItem {
   name: string;
+  image: string;
   totalCost: number;
   totalAmount: number;
 }

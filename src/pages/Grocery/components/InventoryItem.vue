@@ -5,13 +5,14 @@ import { toRefs } from "vue";
 interface Props {
   item: InventoryItem;
 }
+
 const props = defineProps<Props>();
 const { item } = toRefs(props);
 </script>
 
 <template>
   <button class="item">
-    <img :src="item.image" :alt="item.name" />
+    <img :src="item.image" :alt="item.name" loading="lazy" />
     <div class="details">
       <p class="name">{{ item.name }}</p>
       <p class="stock">{{ item.stock }}</p>

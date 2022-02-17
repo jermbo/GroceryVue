@@ -26,7 +26,7 @@ export const useMainStore = defineStore("main", {
       console.log(`Sorry, ${name} are currently out of stock.`);
     },
     addToCart(item: InventoryItem) {
-      const { name, price, stock } = item;
+      const { name, price, stock, image } = item;
 
       if (!stock) {
         this.outOfStock(name);
@@ -38,6 +38,7 @@ export const useMainStore = defineStore("main", {
           name: name,
           totalCost: price,
           totalAmount: 0,
+          image,
         };
       }
 

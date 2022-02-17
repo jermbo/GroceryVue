@@ -30,16 +30,4 @@ const { cartAmountTotal, cart } = toRefs(useMainStore());
 .cart-inner {
   @apply h-full bg-gray-100 rounded-2xl;
 }
-span {
-  padding: 1rem;
-}
-
-button {
-  padding: 1rem;
-  border: 1px solid red;
-
-  &:disabled {
-    background: gray;
-  }
-}
 </style>
