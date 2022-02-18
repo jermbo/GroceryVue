@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { useMainStore } from "@/store/store";
-import { toRefs } from "vue";
+import { onMounted, toRefs } from "vue";
 import InventoryItem from "./InventoryItem.vue";
 
-const { filteredItems, addToCart } = toRefs(useMainStore());
+const { filteredItems, addToCart, filterInventory } = toRefs(useMainStore());
+
+onMounted(() => {
+  console.log("I should only run once while mounting Inventory Items");
+  filterInventory.value();
+});
 </script>
 
 <template>
@@ -22,7 +27,7 @@ const { filteredItems, addToCart } = toRefs(useMainStore());
 <style scoped lang="scss">
 .inventory-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   height: 95%;
   @apply gap-4 p-4 overflow-y-auto;
 }

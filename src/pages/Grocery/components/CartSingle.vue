@@ -27,13 +27,13 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
     />
     <div class="item-description">
       <p class="item-name">{{ item.name }}</p>
-      <p class="item-price">${{ item.itemPrice }}</p>
+      <p class="item-price">${{ item.price }}</p>
     </div>
     <div class="cart-actions">
       <button class="cart-button" @click="decrementCartItem(item)">
         <span>-</span>
       </button>
-      <span class="cart-item-quantity">{{ item.itemQuantity }}</span>
+      <span class="cart-item-quantity">{{ item.quantity }}</span>
       <button
         class="cart-button"
         @click="incrementCartItem(item)"
@@ -49,7 +49,7 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
 .cart-item {
   display: grid;
   grid-template-columns: 50px 3fr 1fr;
-  @apply gap-4;
+  @apply gap-4 shadow-md rounded-full p-2 bg-slate-200;
 }
 
 .item-image {

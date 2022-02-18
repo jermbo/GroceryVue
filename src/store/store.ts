@@ -35,24 +35,21 @@ export const useMainStore = defineStore("main", {
 
       if (!this.cart[name]) {
         this.cart[name] = {
-          name: name,
-          itemPrice: price,
-          totalItemCost: price,
-          itemQuantity: 0,
+          name,
           image,
+          price,
+          quantity: 0,
         };
       }
 
-      this.cart[name].itemQuantity++;
-      this.cart[name].totalItemCost = this.cart[name].itemQuantity * price;
-
+      this.cart[name].quantity++;
       this.updateStockAmount(name, "reduce");
     },
     decrementCartItem(item: CartItem) {
       this.updateStockAmount(item.name, "increase");
-      item.itemQuantity--;
+      item.quantity--;
 
-      if (item.itemQuantity < 1) {
+      if (item.quantity < 1) {
         delete this.cart[item.name];
       }
     },
@@ -63,7 +60,7 @@ export const useMainStore = defineStore("main", {
       }
 
       this.updateStockAmount(item.name, "reduce");
-      item.itemQuantity++;
+      item.quantity++;
     },
     stockAvailable(name: string): boolean {
       let isAvailable = false;
@@ -89,7 +86,7 @@ export const useMainStore = defineStore("main", {
         (item) => item.category == category
       );
     },
-    filterInventory(category: Category) {
+    filterInventory(category: Category = Category.dairy) {
       const filtered = this.$state.inventoryItems.filter(
         (item) => item.category == category
       );
@@ -106,7 +103,8 @@ export const useMainStore = defineStore("main", {
 
       let grandTotal = 0;
       for (let key in state.cart) {
-        grandTotal += state.cart[key].totalItemCost;
+        const { price, quantity } = state.cart[key];
+        grandTotal += price * quantity;
       }
       return grandTotal.toFixed(2);
     },

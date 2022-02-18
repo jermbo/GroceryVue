@@ -12,33 +12,61 @@ const { item } = toRefs(props);
 
 <template>
   <button class="item">
-    <img :src="item.image" :alt="item.name" loading="lazy" />
+    <div class="img">
+      <img
+        :src="item.image"
+        :alt="item.name"
+        width="50"
+        height="50"
+        loading="lazy"
+      />
+    </div>
     <div class="details">
-      <p class="name">{{ item.name }}</p>
-      <p class="stock">{{ item.stock }}</p>
+      <div class="detail">
+        <p class="name">{{ item.name }}</p>
+        <p class="price">{{ item.price }}</p>
+      </div>
+      <div class="detail -right">
+        <p>Stock</p>
+        <p class="stock">{{ item.stock }}</p>
+      </div>
     </div>
   </button>
 </template>
 
 <style scoped lang="scss">
 .item {
-  @apply p-2
-    border-2
-    rounded-md
-  bg-slate-200
-  border-black block shadow-md;
+  display: grid;
+  height: 100%;
+  @apply gap-4 rounded-md
+  bg-slate-100
+  border-black shadow-md
+  overflow-hidden;
 }
 
 .details {
-  @apply flex justify-between px-2 pt-2;
+  background: goldenrod;
+  @apply flex justify-between p-4;
+}
+
+.detail {
+  @apply flex flex-col items-start;
+
+  &.-right {
+    @apply items-end;
+  }
 }
 
 .name {
   @apply font-black;
 }
 
+.img {
+  // overflow: hidden;
+  height: 100%;
+}
+
 img {
-  aspect-ratio: 2/1;
   @apply w-full shadow-md;
 }
 </style>
