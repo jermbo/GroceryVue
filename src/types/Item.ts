@@ -12,8 +12,9 @@ export interface InventoryItem {
 export interface CartItem {
   name: string;
   image: string;
-  totalCost: number;
-  totalAmount: number;
+  itemPrice: number;
+  totalItemCost: number;
+  itemQuantity: number;
 }
 export interface Cart {
   [id: string]: CartItem;

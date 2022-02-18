@@ -382,7 +382,8 @@
 
 <style scoped lang="scss">
 .empty-cart {
-  @apply w-full h-full p-6 flex flex-col justify-center align-middle;
+  @apply w-full h-full p-6 flex flex-col justify-center
+    align-middle select-none;
 }
 h3 {
   @apply text-black text-4xl font-bold text-center leading-normal;

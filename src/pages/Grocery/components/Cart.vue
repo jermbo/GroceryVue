@@ -10,9 +10,13 @@ const { cartAmountTotal, cart } = toRefs(useMainStore());
   <section class="cart-section">
     <div class="cart-inner">
       <template v-if="cartAmountTotal">
-        <CartSingle v-for="item in cart" :key="item.name" :item="item" />
-        <div class="cart-total">
-          <p>Grand Total: {{ cartAmountTotal }}</p>
+        <div class="cart-details">
+          <div class="cart-items">
+            <CartSingle v-for="item in cart" :key="item.name" :item="item" />
+          </div>
+          <div class="cart-total">
+            <p>Grand Total: {{ cartAmountTotal }}</p>
+          </div>
         </div>
       </template>
       <template v-if="!cartAmountTotal">
@@ -28,6 +32,20 @@ const { cartAmountTotal, cart } = toRefs(useMainStore());
 }
 
 .cart-inner {
-  @apply h-full bg-gray-100 rounded-2xl;
+  @apply h-full bg-gray-100 rounded-2xl p-4;
+}
+
+.cart-details {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 150px;
+}
+
+.cart-items {
+  @apply flex flex-col overflow-y-auto gap-4;
+}
+
+.cart-total {
+  border: 1px solid red;
 }
 </style>
