@@ -5,4 +5,5 @@ export enum Category {
   fruits = "fruits",
   seafood = "seafood",
   meat = "meat",
+  beverage = "beverage",
 }

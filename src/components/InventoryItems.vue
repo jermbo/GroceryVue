@@ -13,13 +13,16 @@ onMounted(() => {
 
 <template>
   <div class="inventory-items">
-    <template v-if="filteredItems">
+    <template v-if="filteredItems.length">
       <InventoryItem
         v-for="item in filteredItems"
         :key="item.id"
         :item="item"
         @click="addToCart(item)"
       />
+    </template>
+    <template v-else="!filteredItems.length">
+      <p>Currently out of stock of this category</p>
     </template>
   </div>
 </template>
@@ -28,7 +31,8 @@ onMounted(() => {
 .inventory-items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  height: 95%;
-  @apply gap-4 p-4 overflow-y-auto;
+  grid-template-rows: 200px;
+  grid-auto-rows: minmax(200px, 200px);
+  @apply gap-4 p-4 overflow-y-auto h-full;
 }
 </style>

@@ -86,10 +86,14 @@ export const useMainStore = defineStore("main", {
         (item) => item.category == category
       );
     },
-    filterInventory(category: Category = Category.dairy) {
-      const filtered = this.$state.inventoryItems.filter(
-        (item) => item.category == category
-      );
+    filterInventory(category: Category = Category.all) {
+      const filtered = this.$state.inventoryItems.filter((item) => {
+        if (category == Category.all) {
+          return item;
+        }
+
+        return item.category == category;
+      });
       this.filteredItems = filtered;
     },
   },
@@ -107,14 +111,6 @@ export const useMainStore = defineStore("main", {
         grandTotal += price * quantity;
       }
       return grandTotal.toFixed(2);
-    },
-    allCategories(state: State): Category[] {
-      return state.inventoryItems.reduce((acc, item) => {
-        if (!acc.includes(item.category)) {
-          acc.push(item.category);
-        }
-        return acc;
-      }, [] as Category[]);
     },
   },
 });

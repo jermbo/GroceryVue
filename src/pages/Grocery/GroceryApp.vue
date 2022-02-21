@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Header from "./components/Header.vue";
-import Cart from "./components/Cart.vue";
-import Categories from "./components/Categories.vue";
-import InventoryItems from "./components/InventoryItems.vue";
+import Header from "@/components/Header.vue";
+import Cart from "@/components/Cart.vue";
+import Categories from "@/components/Categories.vue";
+import InventoryItems from "@/components/InventoryItems.vue";
 </script>
 
 <template>
@@ -46,21 +46,17 @@ import InventoryItems from "./components/InventoryItems.vue";
 
 .header {
   grid-area: header;
-  // @apply bg-gray-200;
 }
 
 .cart {
   grid-area: cart;
-  // @apply bg-gray-100;
 }
 
 .inventory {
   grid-area: content;
-  // @apply bg-gray-300;
 }
 
 .categories {
   grid-area: category;
-  // @apply bg-gray-400;
 }
 </style>

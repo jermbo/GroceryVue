@@ -11,7 +11,7 @@ const { item } = toRefs(props);
 </script>
 
 <template>
-  <button class="item">
+  <button class="item" :disabled="item.stock < 1">
     <div class="img">
       <img
         :src="item.image"
@@ -37,15 +37,40 @@ const { item } = toRefs(props);
 <style scoped lang="scss">
 .item {
   display: grid;
-  height: 100%;
-  @apply gap-4 rounded-md
-  bg-slate-100
-  border-black shadow-md
-  overflow-hidden;
+  grid-template-rows: 2fr 1fr;
+  @apply rounded-xl overflow-hidden bg-slate-100 shadow-md hover:shadow-2xl hover:scale-110 transition-all duration-200 ease-in-out;
+
+  &:active {
+    @apply hover:scale-95;
+  }
+
+  &:disabled {
+    @apply cursor-not-allowed opacity-50 hover:shadow-md hover:scale-100 transition-none;
+    &:active {
+      @apply hover:scale-100;
+    }
+  }
+}
+
+.img {
+  @apply w-full h-full overflow-hidden;
+
+  img {
+    @apply w-full h-full object-center object-fill relative;
+
+    &::before {
+      content: "";
+      @apply bg-slate-300 absolute w-full h-full left-0;
+    }
+
+    &::after {
+      content: "\2639"" " attr(alt);
+      @apply text-xl text-slate-500 w-full h-full absolute flex justify-center items-center left-0;
+    }
+  }
 }
 
 .details {
-  background: goldenrod;
   @apply flex justify-between p-4;
 }
 
@@ -59,14 +84,5 @@ const { item } = toRefs(props);
 
 .name {
   @apply font-black;
-}
-
-.img {
-  // overflow: hidden;
-  height: 100%;
-}
-
-img {
-  @apply w-full shadow-md;
 }
 </style>

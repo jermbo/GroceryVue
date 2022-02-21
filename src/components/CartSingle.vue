@@ -61,14 +61,13 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
 }
 
 .item-name {
-  @apply font-bold text-gray-600;
+  @apply font-bold text-slate-600;
 }
 
 .item-price {
-  @apply font-light text-gray-400;
+  @apply font-light text-slate-400;
 }
 .cart-actions {
-  border-color: green;
   @apply flex justify-center items-center;
 }
 
@@ -77,17 +76,17 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
 }
 
 .cart-button {
-  @apply py-2 px-4 rounded-full bg-blue-200 hover:bg-blue-100 transition-all duration-200 ease-in-out;
+  @apply py-2 px-4 rounded-full bg-blue-200 hover:bg-blue-100 transition-all duration-200 ease-in-out select-none;
 
   span {
     @apply text-blue-800 group-hover:text-blue-500;
   }
 
   &:disabled {
-    @apply bg-gray-200;
+    @apply bg-slate-200;
 
     span {
-      @apply text-gray-400;
+      @apply text-slate-400;
     }
   }
 }
