@@ -26,7 +26,7 @@ import InventoryItems from "@/components/InventoryItems.vue";
 .main {
   display: grid;
   grid-template-columns: 1fr 1fr minmax(250px, 1fr);
-  grid-template-rows: 10vh 80vh 10vh;
+  grid-template-rows: 8vh 82vh 10vh;
   grid-template-areas:
     "header header cart"
     "content content cart"
@@ -45,7 +45,9 @@ import InventoryItems from "@/components/InventoryItems.vue";
 }
 
 .header {
+  height: 100%;
   grid-area: header;
+  @apply p-4;
 }
 
 .cart {
