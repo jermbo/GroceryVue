@@ -2,7 +2,7 @@
 import { useMainStore } from "@/store/store";
 import { computed, toRefs } from "vue";
 
-const { cartAmountTotal } = toRefs(useMainStore());
+const { cartAmountTotal, checkout } = toRefs(useMainStore());
 
 const tax = computed(() => {
   //@ts-ignore
@@ -23,7 +23,7 @@ const tax = computed(() => {
     <p class="grand-total">
       Grand Total <span>${{ cartAmountTotal }}</span>
     </p>
-    <button class="checkout">Checkout</button>
+    <button class="checkout" @click="checkout()">Checkout</button>
   </div>
 </template>
 

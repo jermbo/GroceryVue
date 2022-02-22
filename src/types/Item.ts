@@ -3,14 +3,16 @@ import { Category } from "./Category";
 export interface InventoryItem {
   id: number;
   stock: number;
-  name: string;
+  title: string;
   category: Category;
   price: number;
-  image: string;
+  image?: string;
+  description?: string;
+  slogan?: string;
 }
 
 export interface CartItem {
-  name: string;
+  title: string;
   image: string;
   price: number;
   quantity: number;

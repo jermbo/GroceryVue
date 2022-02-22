@@ -20,10 +20,10 @@ const items = filteredItems;
     >
       <button @click="addToCart(item)" :disabled="!item.stock">
         <div class="image-wrapper">
-          <img :src="item.image" :alt="item.name" class="" />
+          <img :src="item.image" :alt="item.title" class="" />
         </div>
         <div class="header">
-          <h3 class="name">{{ item.name }} - {{ item.stock }}</h3>
+          <h3 class="title">{{ item.title }} - {{ item.stock }}</h3>
           <p class="price">${{ item.price }}</p>
         </div>
       </button>
@@ -76,7 +76,7 @@ img {
     justify-between;
 }
 
-.name {
+.title {
   @apply text-sm 
     text-gray-700;
 }

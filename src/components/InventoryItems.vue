@@ -1,14 +1,9 @@
 <script setup lang="ts">
 import { useMainStore } from "@/store/store";
-import { onMounted, toRefs } from "vue";
+import { toRefs } from "vue";
 import InventoryItem from "./InventoryItem.vue";
 
-const { filteredItems, addToCart, filterInventory } = toRefs(useMainStore());
-
-onMounted(() => {
-  console.log("I should only run once while mounting Inventory Items");
-  filterInventory.value();
-});
+const { filteredItems, addToCart } = toRefs(useMainStore());
 </script>
 
 <template>

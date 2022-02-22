@@ -13,7 +13,7 @@ const { cartAmountTotal, cart } = toRefs(useMainStore());
       <template v-if="cartAmountTotal">
         <div class="cart-details">
           <div class="cart-items">
-            <CartSingle v-for="item in cart" :key="item.name" :item="item" />
+            <CartSingle v-for="item in cart" :key="item.title" :item="item" />
           </div>
           <div class="cart-total">
             <CartTotal />

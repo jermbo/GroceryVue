@@ -3,23 +3,46 @@ import Header from "@/components/Header.vue";
 import Cart from "@/components/Cart.vue";
 import Categories from "@/components/Categories.vue";
 import InventoryItems from "@/components/InventoryItems.vue";
+import { onMounted, toRefs, watch } from "vue";
+import { useMainStore } from "@/store/store";
+import { Category } from "@/types/Category";
+import { AppState } from "@/types/AppState";
+
+const { appState, fetchInventoryData } = toRefs(useMainStore());
+
+onMounted(() => {
+  console.log("I should only run once while mounting Grocery App");
+  fetchInventoryData.value();
+});
+// watch();
 </script>
 
 <template>
-  <main class="main">
-    <header class="header">
-      <Header />
-    </header>
-    <div class="inventory">
-      <InventoryItems />
-    </div>
-    <div class="categories">
-      <Categories />
-    </div>
-    <div class="cart">
-      <Cart />
-    </div>
-  </main>
+  <template v-if="appState === AppState.LOADING">
+    <p>loading</p>
+  </template>
+  <template v-if="appState === AppState.CHECKOUT">
+    <p>Checkout</p>
+  </template>
+  <template v-if="appState === AppState.NORMAL">
+    <main class="main">
+      <header class="header">
+        <Header />
+      </header>
+      <div class="inventory">
+        <InventoryItems />
+      </div>
+      <div class="categories">
+        <Categories />
+      </div>
+      <div class="cart">
+        <Cart />
+      </div>
+    </main>
+  </template>
+  <template v-if="appState === AppState.ERROR">
+    <p>Something went wrong</p>
+  </template>
 </template>
 
 <style scoped lang="scss">

@@ -15,7 +15,7 @@ const { item } = toRefs(props);
     <div class="img">
       <img
         :src="item.image"
-        :alt="item.name"
+        :alt="item.title"
         width="50"
         height="50"
         loading="lazy"
@@ -23,7 +23,7 @@ const { item } = toRefs(props);
     </div>
     <div class="details">
       <div class="detail">
-        <p class="name">{{ item.name }}</p>
+        <p class="title">{{ item.title }}</p>
         <p class="price">{{ item.price }}</p>
       </div>
       <div class="detail -right">
@@ -82,7 +82,7 @@ const { item } = toRefs(props);
   }
 }
 
-.name {
+.title {
   @apply font-black;
 }
 </style>

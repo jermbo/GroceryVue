@@ -1,78 +1,118 @@
+import { AppState } from "@/types/AppState";
 import { acceptHMRUpdate, defineStore } from "pinia";
 import { inventoryItems } from "../data/inventory";
 import { Category } from "../types/Category";
 import { Cart, CartItem, InventoryItem } from "../types/Item";
 
 type CartDetailsState = "open" | "closed";
+
 interface State {
+  appState: AppState;
   inventoryItems: InventoryItem[];
   filteredItems: InventoryItem[];
   cart: Cart;
   cartDetailsState: CartDetailsState;
 }
 
+const TempCartData: Cart = {
+  "Def-Con Owl Traps": {
+    title: "Def-Con Owl Traps",
+    image: "https://unsplash.it/id/10/200/200/",
+    price: 309.29,
+    quantity: 3,
+  },
+  "Human traps": {
+    title: "Human traps",
+    image: "https://unsplash.it/id/11/200/200/",
+    price: 999.99,
+    quantity: 1,
+  },
+  "Arachno Spores": {
+    title: "Arachno Spores",
+    image: "https://unsplash.it/id/12/200/200/",
+    price: 1.99,
+    quantity: 2,
+  },
+};
+
 export const useMainStore = defineStore("main", {
   state: () => {
     return {
-      inventoryItems,
-      filteredItems: inventoryItems,
-      cart: {},
+      appState: AppState.LOADING,
+      inventoryItems: [],
+      filteredItems: [],
+      cart: TempCartData,
       cartDetailsState: "open",
     } as State;
   },
   actions: {
-    outOfStock(name: string) {
+    async fetchInventoryData() {
+      const resp = await fetch("https://api.sampleapis.com/futurama/inventory");
+      const data: InventoryItem[] = await resp.json();
+      const newData = data.map((d, i) => {
+        return { ...d, image: `https://unsplash.it/id/${i + 10}/200/200/` };
+      });
+      setTimeout(() => {
+        this.inventoryItems = newData;
+        this.filteredItems = newData;
+        this.appState = AppState.NORMAL;
+      }, 2000);
+    },
+    checkout() {
+      this.appState = AppState.CHECKOUT;
+    },
+    outOfStock(title: string) {
       // TODO: Add Toast message for which item is out of stock
-      console.log(`Sorry, ${name} are currently out of stock.`);
+      console.log(`Sorry, ${title} are currently out of stock.`);
     },
     addToCart(item: InventoryItem) {
-      const { name, price, stock, image } = item;
+      const { title, price, stock, image } = item;
 
       if (!stock) {
-        this.outOfStock(name);
+        this.outOfStock(title);
         return;
       }
 
-      if (!this.cart[name]) {
-        this.cart[name] = {
-          name,
-          image,
+      if (!this.cart[title]) {
+        this.cart[title] = {
+          title,
+          image: image || "",
           price,
           quantity: 0,
         };
       }
 
-      this.cart[name].quantity++;
-      this.updateStockAmount(name, "reduce");
+      this.cart[title].quantity++;
+      this.updateStockAmount(title, "reduce");
     },
     decrementCartItem(item: CartItem) {
-      this.updateStockAmount(item.name, "increase");
+      this.updateStockAmount(item.title, "increase");
       item.quantity--;
 
       if (item.quantity < 1) {
-        delete this.cart[item.name];
+        delete this.cart[item.title];
       }
     },
     incrementCartItem(item: CartItem) {
-      if (!this.stockAvailable(item.name)) {
-        this.outOfStock(item.name);
+      if (!this.stockAvailable(item.title)) {
+        this.outOfStock(item.title);
         return;
       }
 
-      this.updateStockAmount(item.name, "reduce");
+      this.updateStockAmount(item.title, "reduce");
       item.quantity++;
     },
-    stockAvailable(name: string): boolean {
+    stockAvailable(title: string): boolean {
       let isAvailable = false;
       this.inventoryItems.forEach((item) => {
-        if (item.name !== name) return;
+        if (item.title !== title) return;
         isAvailable = item.stock > 0;
       });
       return isAvailable;
     },
-    updateStockAmount(name: string, type: "reduce" | "increase") {
+    updateStockAmount(title: string, type: "reduce" | "increase") {
       this.inventoryItems.forEach((item) => {
-        if (item.name !== name) return;
+        if (item.title !== title) return;
         item.stock = type === "reduce" ? item.stock - 1 : item.stock + 1;
       });
     },

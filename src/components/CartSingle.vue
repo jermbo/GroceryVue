@@ -23,10 +23,10 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
       width="50"
       height="50"
       loading="lazy"
-      :alt="item.name"
+      :alt="item.title"
     />
     <div class="item-description">
-      <p class="item-name">{{ item.name }}</p>
+      <p class="item-title">{{ item.title }}</p>
       <p class="item-price">${{ item.price }}</p>
     </div>
     <div class="cart-actions">
@@ -37,7 +37,7 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
       <button
         class="cart-button"
         @click="incrementCartItem(item)"
-        :disabled="!stockAvailable(item.name)"
+        :disabled="!stockAvailable(item.title)"
       >
         <span>+</span>
       </button>
@@ -60,7 +60,7 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
   color: red;
 }
 
-.item-name {
+.item-title {
   @apply font-bold text-slate-600;
 }
 
