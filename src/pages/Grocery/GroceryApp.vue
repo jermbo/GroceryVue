@@ -3,10 +3,10 @@ import Header from "@/components/Header.vue";
 import Cart from "@/components/Cart.vue";
 import Categories from "@/components/Categories.vue";
 import InventoryItems from "@/components/InventoryItems.vue";
-import { onMounted, toRefs, watch } from "vue";
+import { onMounted, toRefs } from "vue";
 import { useMainStore } from "@/store/store";
-import { Category } from "@/types/Category";
 import { AppState } from "@/types/AppState";
+import LoadingOverlay from "@/components/LoadingOverlay.vue";
 
 const { appState, fetchInventoryData } = toRefs(useMainStore());
 
@@ -14,12 +14,11 @@ onMounted(() => {
   console.log("I should only run once while mounting Grocery App");
   fetchInventoryData.value();
 });
-// watch();
 </script>
 
 <template>
   <template v-if="appState === AppState.LOADING">
-    <p>loading</p>
+    <LoadingOverlay />
   </template>
   <template v-if="appState === AppState.CHECKOUT">
     <p>Checkout</p>

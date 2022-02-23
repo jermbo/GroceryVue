@@ -16,7 +16,7 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
 </script>
 
 <template>
-  <div class="cart-item">
+  <section class="cart-item">
     <img
       class="item-image"
       :src="item.image"
@@ -30,11 +30,16 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
       <p class="item-price">${{ item.price }}</p>
     </div>
     <div class="cart-actions">
-      <button class="cart-button" @click="decrementCartItem(item)">
+      <button
+        :aria-label="`Decrease ${item.title}`"
+        class="cart-button"
+        @click="decrementCartItem(item)"
+      >
         <span>-</span>
       </button>
       <span class="cart-item-quantity">{{ item.quantity }}</span>
       <button
+        :aria-label="`Increase ${item.title}`"
         class="cart-button"
         @click="incrementCartItem(item)"
         :disabled="!stockAvailable(item.title)"
@@ -42,7 +47,7 @@ const { decrementCartItem, incrementCartItem, stockAvailable } = toRefs(
         <span>+</span>
       </button>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import useNumberFormat from "@/composables/numberFormat";
 import { InventoryItem } from "@/types/Item";
 import { toRefs } from "vue";
 
@@ -24,11 +25,11 @@ const { item } = toRefs(props);
     <div class="details">
       <div class="detail">
         <p class="title">{{ item.title }}</p>
-        <p class="price">{{ item.price }}</p>
+        <p class="price">${{ item.price }}</p>
       </div>
       <div class="detail -right">
         <p>Stock</p>
-        <p class="stock">{{ item.stock }}</p>
+        <p class="stock">{{ useNumberFormat(item.stock) }}</p>
       </div>
     </div>
   </button>
@@ -37,7 +38,7 @@ const { item } = toRefs(props);
 <style scoped lang="scss">
 .item {
   display: grid;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: minmax(120px, 150px);
   @apply rounded-xl overflow-hidden bg-slate-100 shadow-md hover:shadow-2xl hover:scale-110 transition-all duration-200 ease-in-out;
 
   &:active {
@@ -71,11 +72,11 @@ const { item } = toRefs(props);
 }
 
 .details {
-  @apply flex justify-between p-4;
+  @apply flex justify-between p-4 h-full;
 }
 
 .detail {
-  @apply flex flex-col items-start;
+  @apply flex flex-col justify-end items-start text-left h-full;
 
   &.-right {
     @apply items-end;

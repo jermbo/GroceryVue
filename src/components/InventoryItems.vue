@@ -25,9 +25,9 @@ const { filteredItems, addToCart } = toRefs(useMainStore());
 <style scoped lang="scss">
 .inventory-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-template-rows: 200px;
-  grid-auto-rows: 200px;
+  grid-auto-rows: 250px;
   @apply gap-4 p-4 overflow-y-auto h-full;
 }
 </style>
