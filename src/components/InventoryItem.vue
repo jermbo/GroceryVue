@@ -39,7 +39,7 @@ const { item } = toRefs(props);
 .item {
   display: grid;
   grid-template-rows: minmax(120px, 150px);
-  @apply rounded-xl overflow-hidden bg-slate-100 shadow-md hover:shadow-2xl hover:scale-110 transition-all duration-200 ease-in-out;
+  @apply rounded-xl overflow-hidden bg-slate-100 shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-200 ease-in-out;
 
   &:active {
     @apply hover:scale-95;

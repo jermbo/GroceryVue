@@ -23,7 +23,7 @@ const allCategories = Object.keys(Category) as Category[];
 
 <style scoped lang="scss">
 .categories-section {
-  @apply p-4;
+  @apply pl-4 pt-4;
 }
 
 .categories-inner {

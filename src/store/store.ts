@@ -56,7 +56,7 @@ export const useMainStore = defineStore("main", {
         this.inventoryItems = newData;
         this.filteredItems = newData;
         this.appState = AppState.NORMAL;
-      }, 2000);
+      }, 1000);
     },
     checkout() {
       this.appState = AppState.CHECKOUT;
