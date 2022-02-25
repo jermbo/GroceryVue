@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import useNumberFormat from "@/composables/numberFormat";
-import { InventoryItem } from "@/types/Item";
+import useNumberFormat from "../composables/numberFormat";
+import { InventoryItem } from "../types/Item";
 import { toRefs } from "vue";
 
 interface Props {

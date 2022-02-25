@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DateTimeFormatOptions } from "@/types/DateTime";
+import { DateTimeFormatOptions } from "../types/DateTime";
 
 const options: DateTimeFormatOptions = {
   year: "numeric",

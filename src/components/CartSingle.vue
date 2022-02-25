@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
-import { useMainStore } from "@/store/store";
-import { CartItem } from "@/types/Item";
+import { useMainStore } from "../store/store";
+import { CartItem } from "../types/Item";
 
 interface Props {
   item: CartItem;

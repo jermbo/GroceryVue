@@ -1,4 +1,4 @@
-import { AppState } from "@/types/AppState";
+import { AppState } from "../types/AppState";
 import { acceptHMRUpdate, defineStore } from "pinia";
 import { inventoryItems } from "../data/inventory";
 import { Category } from "../types/Category";

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useMainStore } from "@/store/store";
-import { Category } from "@/types/Category";
+import { useMainStore } from "../store/store";
+import { Category } from "../types/Category";
 import { toRefs } from "vue";
 
 const { filterInventory } = toRefs(useMainStore());

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMainStore } from "@/store/store";
+import { useMainStore } from "../store/store";
 import { computed, toRefs } from "vue";
 
 const { cartAmountTotal, checkout } = toRefs(useMainStore());

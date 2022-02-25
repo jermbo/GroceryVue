@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import Main from "./components/Main.vue";
-import GroceryApp from "./pages/Grocery/GroceryApp.vue";
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <GroceryApp />
+  <header>
+    <div class="wrapper">
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink :to="{ name: 'grocery' }">About</RouterLink>
+      </nav>
+    </div>
+  </header>
+
+  <RouterView />
 </template>
 
 <style lang="scss">
