@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useMainStore } from "../store/store";
-import { Category } from "../types/Category";
 import { toRefs } from "vue";
+import { Category } from "@/types/Category";
+import { useMainStore } from "@/store/store";
 
 const { filterInventory } = toRefs(useMainStore());
 const allCategories = Object.keys(Category) as Category[];

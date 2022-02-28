@@ -11,7 +11,7 @@ const router = createRouter({
     {
       path: "/grocery",
       name: "grocery",
-      component: () => import("../pages/GroceryApp.vue"),
+      component: () => import("../pages/Grocery/GroceryApp.vue"),
     },
   ],
 });

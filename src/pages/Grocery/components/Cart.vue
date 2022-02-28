@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
+import { useMainStore } from "@/store/store";
 import CartSingle from "./CartSingle.vue";
 import EmptyCart from "./EmptyCart.vue";
 import CartTotal from "./CartTotal.vue";
-import { useMainStore } from "@/store/store";
 const { cartAmountTotal, cart } = toRefs(useMainStore());
 </script>
 

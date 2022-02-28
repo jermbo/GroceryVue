@@ -3,11 +3,14 @@ console.log("what up");
 </script>
 
 <template>
-  <div>Home</div>
+  <div>
+    <h1>App Store</h1>
+    <p>Pick which app you want to work with.</p>
+
+    <div>
+      <RouterLink :to="{ name: 'grocery' }">Grocery</RouterLink>
+    </div>
+  </div>
 </template>
 
-<style scoped lang="scss">
-div {
-  background: cyan;
-}
-</style>
+<style scoped lang="scss"></style>

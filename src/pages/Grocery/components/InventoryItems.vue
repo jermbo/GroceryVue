@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useMainStore } from "../store/store";
 import { toRefs } from "vue";
+import { useMainStore } from "@/store/store";
 import InventoryItem from "./InventoryItem.vue";
 
 const { filteredItems, addToCart } = toRefs(useMainStore());

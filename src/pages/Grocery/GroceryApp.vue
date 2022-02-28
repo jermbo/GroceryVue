@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import Header from "../components/Header.vue";
-import Cart from "../components/Cart.vue";
-import Categories from "../components/Categories.vue";
-import InventoryItems from "../components/InventoryItems.vue";
+import Header from "./components/Header.vue";
+import Cart from "./components/Cart.vue";
+import Categories from "./components/Categories.vue";
+import InventoryItems from "./components/InventoryItems.vue";
 import { onMounted, toRefs } from "vue";
-import { useMainStore } from "../store/store";
-import { AppState } from "../types/AppState";
-import LoadingOverlay from "../components/LoadingOverlay.vue";
+import { useMainStore } from "@/store/store";
+import { AppState } from "@/types/AppState";
+import LoadingOverlay from "./components/LoadingOverlay.vue";
 
 const { appState, fetchInventoryData } = toRefs(useMainStore());
-
 onMounted(() => {
   console.log("I should only run once while mounting Grocery App");
   fetchInventoryData.value();

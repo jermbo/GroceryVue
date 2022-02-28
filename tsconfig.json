@@ -20,6 +20,18 @@
       ],
       "@/store": [
         "./src/store/*"
+      ],
+      "@/types": [
+        "./src/types/*"
+      ],
+      "@/comps": [
+        "./src/components/*"
+      ],
+      "@/utils": [
+        "./src/utils/*"
+      ],
+      "@/routes": [
+        "./src/routes/*"
       ]
     }
   },
