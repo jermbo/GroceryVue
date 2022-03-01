@@ -3,7 +3,7 @@ console.log("what up");
 </script>
 
 <template>
-  <div>
+  <div class="home-wrapper">
     <h1>App Store</h1>
     <p>Pick which app you want to work with.</p>
 
@@ -13,4 +13,11 @@ console.log("what up");
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.home-wrapper {
+  @apply text-center p-4 h-screen w-screen bg-slate-200;
+}
+h1 {
+  @apply text-2xl font-bold;
+}
+</style>

@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
+import MainNav from "./components/MainNav.vue";
 </script>
 
 <template>
   <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink :to="{ name: 'grocery' }">Grocery</RouterLink>
-      </nav>
-    </div>
+    <MainNav />
   </header>
 
-  <RouterView />
+  <main class="main-wrapper">
+    <RouterView />
+  </main>
 </template>
 
 <style lang="scss">
@@ -27,5 +25,9 @@ import { RouterLink, RouterView } from "vue-router";
 
 ::-webkit-scrollbar-thumb {
   @apply rounded-md bg-blue-400 shadow-md;
+}
+
+.main-wrapper {
+  // @apply p-4;
 }
 </style>
